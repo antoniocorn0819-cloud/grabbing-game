@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://brlerw034ucb0"]
+
+[ext_resource type="Script" uid="uid://m2ibf76bcouu" path="res://Scripts/player.gd" id="1_xhfnw"]
+[ext_resource type="Script" uid="uid://dqj0pvvjik8kk" path="res://Scripts/Components/input.gd" id="2_kne1u"]
+[ext_resource type="Texture2D" uid="uid://nlyhelhbp7jw" path="res://icon.svg" id="2_kpjcp"]
+[ext_resource type="Script" uid="uid://calksks73icd3" path="res://Scripts/Components/movement.gd" id="3_e80uo"]
+[ext_resource type="Script" uid="uid://bi34je4hkt54p" path="res://Scripts/Components/character_controls.gd" id="4_cxr5p"]
+[ext_resource type="Script" uid="uid://mkun4e61s3m2" path="res://Scripts/Components/gravity.gd" id="5_tdg3f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kpjcp"]
+radius = 27.018513
+
+[node name="Player" type="CharacterBody2D" unique_id=338972521]
+
+[node name="Components" type="Node" parent="." unique_id=1522014011 node_paths=PackedStringArray("input_component", "movement_component", "character_controls", "gravity_component")]
+script = ExtResource("1_xhfnw")
+input_component = NodePath("Input")
+movement_component = NodePath("Movement")
+character_controls = NodePath("Movement/Character Controls")
+gravity_component = NodePath("Movement/Gravity")
+
+[node name="Input" type="Node" parent="Components" unique_id=1063273412]
+script = ExtResource("2_kne1u")
+
+[node name="Movement" type="Node" parent="Components" unique_id=965091662 node_paths=PackedStringArray("body")]
+script = ExtResource("3_e80uo")
+body = NodePath("../..")
+
+[node name="Character Controls" type="Node" parent="Components/Movement" unique_id=1725183300 node_paths=PackedStringArray("movement")]
+script = ExtResource("4_cxr5p")
+movement = NodePath("..")
+
+[node name="Gravity" type="Node" parent="Components/Movement" unique_id=754688599 node_paths=PackedStringArray("movement_component")]
+script = ExtResource("5_tdg3f")
+movement_component = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=822901560]
+scale = Vector2(0.46875, 0.390625)
+texture = ExtResource("2_kpjcp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1256442141]
+shape = SubResource("CircleShape2D_kpjcp")
