@@ -6,16 +6,24 @@ extends Node
 @export var character_controls: CharacterControls
 @export var gravity_component: GravityComponent
 
+@export var grabber_component: GrabberComponent
 
 func _physics_process(delta):
 	input_component.update_input()
+	
+	if input_component.is_grabbing:
+		if grabber_component.current_grabbable_component == null:
+			grabber_component.initiate_grab()
+		else:
+			grabber_component.initiate_throw(movement_component.body.velocity)
+	
 	gravity_component.update_gravity()
 	
 	if input_component.is_jumping:
 		character_controls.attempt_jump()
-		print("hello?")
 	
 	character_controls.attempt_horizontal_movement(input_component.input_direction)
+	
 	
 	movement_component.update_movement(delta)
 

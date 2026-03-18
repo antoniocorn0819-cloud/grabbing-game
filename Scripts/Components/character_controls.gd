@@ -10,4 +10,6 @@ func attempt_jump() -> void:
 		movement.body.velocity.y = jump_magnitude 
 
 func attempt_horizontal_movement(direction: float) -> void:
+	print("control component: attempting horizontal movement")
+	print(direction)
 	movement.body.velocity.x = horizontal_speed * movement.delta_local * direction

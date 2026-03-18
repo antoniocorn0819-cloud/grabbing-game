@@ -1,17 +1,14 @@
 [gd_scene format=3 uid="uid://cwpdryfj1vupx"]
 
 [ext_resource type="PackedScene" uid="uid://brlerw034ucb0" path="res://Player.tscn" id="1_wbfu4"]
+[ext_resource type="PackedScene" uid="uid://bfku2vy66djcq" path="res://Jawn.tscn" id="1_xkndl"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xkndl"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wbfu4"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_wbfu4"]
-radius = 33.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xkndl"]
-
 [node name="Node2D" type="Node2D" unique_id=1833011822]
+
+[node name="Jawn" parent="." unique_id=1706000139 instance=ExtResource("1_xkndl")]
+position = Vector2(200.255, 0)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1079545116]
 position = Vector2(0, 300)
@@ -22,16 +19,3 @@ shape = SubResource("WorldBoundaryShape2D_xkndl")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=575269455]
 
 [node name="Player" parent="." unique_id=338972521 instance=ExtResource("1_wbfu4")]
-
-[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=2054497260]
-position = Vector2(300, 94.055)
-physics_material_override = SubResource("PhysicsMaterial_wbfu4")
-gravity_scale = 0.103
-angular_velocity = 0.039008107
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=776332670]
-shape = SubResource("CircleShape2D_wbfu4")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=840630637]
-scale = Vector2(0.109375, 0.12109375)
-texture = SubResource("NoiseTexture2D_xkndl")

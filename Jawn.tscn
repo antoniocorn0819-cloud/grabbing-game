@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bfku2vy66djcq"]
+
+[ext_resource type="Script" uid="uid://3dh3ka133fto" path="res://jawn.gd" id="1_0ysdr"]
+[ext_resource type="Script" uid="uid://calksks73icd3" path="res://Scripts/Components/movement.gd" id="2_xxsqy"]
+[ext_resource type="Script" uid="uid://mkun4e61s3m2" path="res://Scripts/Components/gravity.gd" id="3_jnjk7"]
+[ext_resource type="Script" uid="uid://be1fotpe6niyh" path="res://grabbable.gd" id="4_xxsqy"]
+[ext_resource type="Texture2D" uid="uid://nlyhelhbp7jw" path="res://icon.svg" id="5_jnjk7"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8mgam"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wi61b"]
+radius = 49.162994
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xxsqy"]
+radius = 34.0
+
+[node name="Jawn" type="CharacterBody2D" unique_id=1706000139]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=84040035]
+position = Vector2(1, -1)
+scale = Vector2(-70.45024, -68.379005)
+texture = SubResource("PlaceholderTexture2D_8mgam")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=637113364]
+visible = false
+shape = SubResource("CircleShape2D_wi61b")
+
+[node name="Components" type="Node" parent="." unique_id=308913555 node_paths=PackedStringArray("movement_component", "gravity_component", "grabable_component")]
+script = ExtResource("1_0ysdr")
+movement_component = NodePath("MovementComponent")
+gravity_component = NodePath("MovementComponent/GravityComponent")
+grabable_component = NodePath("../GrabableComponent")
+
+[node name="MovementComponent" type="Node" parent="Components" unique_id=1193077374 node_paths=PackedStringArray("body", "collision_shape")]
+script = ExtResource("2_xxsqy")
+body = NodePath("../..")
+collision_shape = NodePath("../../CollisionShape2D")
+metadata/_custom_type_script = "uid://calksks73icd3"
+
+[node name="GravityComponent" type="Node" parent="Components/MovementComponent" unique_id=1545104408 node_paths=PackedStringArray("movement_component")]
+script = ExtResource("3_jnjk7")
+movement_component = NodePath("..")
+metadata/_custom_type_script = "uid://mkun4e61s3m2"
+
+[node name="GrabableComponent" type="Area2D" parent="." unique_id=642606005]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4_xxsqy")
+metadata/_custom_type_script = "uid://be1fotpe6niyh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabableComponent" unique_id=407460024]
+shape = SubResource("CircleShape2D_xxsqy")
+
+[node name="Sprite2D" type="Sprite2D" parent="GrabableComponent" unique_id=736206185]
+position = Vector2(-3.8146973e-06, 0)
+scale = Vector2(0.515625, 0.296875)
+texture = ExtResource("5_jnjk7")
