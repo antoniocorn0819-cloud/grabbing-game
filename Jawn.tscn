@@ -42,11 +42,11 @@ script = ExtResource("3_jnjk7")
 movement_component = NodePath("..")
 metadata/_custom_type_script = "uid://mkun4e61s3m2"
 
-[node name="GrabableComponent" type="Area2D" parent="." unique_id=642606005]
+[node name="GrabableComponent" type="Area2D" parent="." unique_id=642606005 node_paths=PackedStringArray("object_root_node")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("4_xxsqy")
-metadata/_custom_type_script = "uid://be1fotpe6niyh"
+object_root_node = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabableComponent" unique_id=407460024]
 shape = SubResource("CircleShape2D_xxsqy")

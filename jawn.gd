@@ -21,15 +21,27 @@ func _physics_process(delta: float) -> void:
 		gravity_component.update_gravity()
 		movement_component.update_movement(delta)
 	elif current_state == States.Grabbed:
-		print("jawn in grab state")
-		movement_component.body.position = grabable_component.get_grabber_position()
+		pass
+		# print("jawn in grab state")
+		# movement_component.body.global_position = grabable_component.get_grabber_position(movement_component.body.global_position)
+
+
 
 func grab_on_handler():
 	current_state = States.Grabbed
 	# make universal?
 	movement_component.collision_shape.disabled = true
+	
+	# definitely make this universal somehow
+	# call_deferred("grab_on_deffered")
 
-func grab_off_handler():
+# this is so janky rn but it doesnt even work
+#func grab_on_deffered():
+#	movement_component.body.global_position = grabable_component.get_grabber_position(movement_component.body.global_position)
+
+
+func grab_off_handler(inherit_throw_velocity):
 	current_state = States.Free
-	# make universal?
+	movement_component.body.velocity = inherit_throw_velocity
 	movement_component.collision_shape.disabled = false
+	print("jawn grab off handler ran")

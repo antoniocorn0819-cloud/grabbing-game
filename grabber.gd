@@ -16,6 +16,8 @@ func initiate_grab() -> void:
 			grab_box.get_overlapping_areas()[0].attempt_grab(self)
 			current_grabbable_component = grab_box.get_overlapping_areas()[0]
 
+
+
 func initiate_throw(throw_inherit_velocity: Vector2):
 	current_grabbable_component.attempt_throw(throw_inherit_velocity)
 	current_grabbable_component = null

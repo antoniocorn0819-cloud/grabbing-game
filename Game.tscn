@@ -8,7 +8,21 @@
 [node name="Node2D" type="Node2D" unique_id=1833011822]
 
 [node name="Jawn" parent="." unique_id=1706000139 instance=ExtResource("1_xkndl")]
-position = Vector2(200.255, 0)
+position = Vector2(197, 0)
+
+[node name="Jawn2" parent="." unique_id=247739586 instance=ExtResource("1_xkndl")]
+modulate = Color(0.23137255, 1, 1, 1)
+position = Vector2(107, -73)
+
+[node name="Jawn3" parent="." unique_id=1947921237 instance=ExtResource("1_xkndl")]
+modulate = Color(1, 1, 0.3647059, 1)
+position = Vector2(216, 104)
+
+[node name="Jawn4" parent="." unique_id=2055179009 instance=ExtResource("1_xkndl")]
+position = Vector2(349, -35)
+
+[node name="Jawn5" parent="." unique_id=1626373825 instance=ExtResource("1_xkndl")]
+position = Vector2(330, 49)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1079545116]
 position = Vector2(0, 300)

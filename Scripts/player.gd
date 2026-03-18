@@ -11,11 +11,7 @@ extends Node
 func _physics_process(delta):
 	input_component.update_input()
 	
-	if input_component.is_grabbing:
-		if grabber_component.current_grabbable_component == null:
-			grabber_component.initiate_grab()
-		else:
-			grabber_component.initiate_throw(movement_component.body.velocity)
+	
 	
 	gravity_component.update_gravity()
 	
@@ -23,9 +19,13 @@ func _physics_process(delta):
 		character_controls.attempt_jump()
 	
 	character_controls.attempt_horizontal_movement(input_component.input_direction)
-	
-	
 	movement_component.update_movement(delta)
+	
+	if input_component.is_grabbing:
+		if grabber_component.current_grabbable_component == null:
+			grabber_component.initiate_grab()
+		else:
+			grabber_component.initiate_throw(movement_component.body.velocity * 1.4)
 
 
 
