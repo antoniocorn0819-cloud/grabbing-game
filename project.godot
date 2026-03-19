@@ -15,6 +15,10 @@ run/main_scene="uid://cwpdryfj1vupx"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Constants="*uid://cdk14eadb37al"
+
 [layer_names]
 
 2d_physics/layer_3="Grabbing Layer"

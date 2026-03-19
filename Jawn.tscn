@@ -44,6 +44,7 @@ health_component = NodePath("HealthComponent")
 script = ExtResource("2_xxsqy")
 body = NodePath("../..")
 collision_shape = NodePath("../../CollisionShape2D")
+mass = 0.5
 metadata/_custom_type_script = "uid://calksks73icd3"
 
 [node name="GravityComponent" type="Node" parent="Components/MovementComponent" unique_id=1545104408 node_paths=PackedStringArray("movement_component")]
@@ -76,6 +77,7 @@ script = ExtResource("6_41w5e")
 collision_shape = NodePath("CollisionShape2D")
 health_component = NodePath("../Components/HealthComponent")
 movement_component = NodePath("../Components/MovementComponent")
+default_color = 1
 metadata/_custom_type_script = "uid://6kxrlug202kg"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1061777583]

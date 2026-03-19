@@ -73,10 +73,11 @@ shape = SubResource("CircleShape2D_tdg3f")
 [node name="Grab Point AHHH" type="Node2D" parent="." unique_id=2035912088]
 position = Vector2(2, -44)
 
-[node name="HurtboxComponent" type="Area2D" parent="." unique_id=831525458]
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=831525458 node_paths=PackedStringArray("collision_shape")]
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("8_5ncpa")
+collision_shape = NodePath("CollisionShape2D")
 metadata/_custom_type_script = "uid://cic75o1o2v4s6"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=593405718]

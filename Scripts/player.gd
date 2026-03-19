@@ -41,12 +41,13 @@ func _physics_process(delta):
 func enemy_hit():
 	# change to force
 	print("got it")
-	movement_component.body.velocity.y -= 800
+	# change to impulse????
+	movement_component.body.velocity.y = -500
 
 
 func per_enemy_hit(hitbox: HitboxComponent):
 	if !hitbox.movement_component == null:
-		hitbox.movement_component.body.velocity.y += 600
+		hitbox.movement_component.apply_impulse(Vector2(0, 800))
 	hitbox.recieve_damage(1)
 
 #const SPEED = 300.0
