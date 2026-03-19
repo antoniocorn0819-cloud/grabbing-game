@@ -1,5 +1,6 @@
 extends Node
 
+
 @export var input_component: InputComponent
 
 @export var movement_component: MovementComponent
@@ -7,6 +8,13 @@ extends Node
 @export var gravity_component: GravityComponent
 
 @export var grabber_component: GrabberComponent
+
+@export var jump_attack: HurtboxComponent
+
+func _ready():
+	jump_attack.hit_box.connect(enemy_hit)
+	jump_attack.hitbox_found.connect(per_enemy_hit)
+
 
 func _physics_process(delta):
 	input_component.update_input()
@@ -17,6 +25,7 @@ func _physics_process(delta):
 	
 	if input_component.is_jumping:
 		character_controls.attempt_jump()
+		jump_attack.initiate_hurt()  
 	
 	character_controls.attempt_horizontal_movement(input_component.input_direction)
 	movement_component.update_movement(delta)
@@ -29,6 +38,14 @@ func _physics_process(delta):
 
 
 
+func enemy_hit():
+	# change to force
+	print("got it")
+	movement_component.body.velocity.y -= 800
+
+
+func per_enemy_hit(hitbox: HitboxComponent):
+	hitbox.recieve_damage(1)
 
 #const SPEED = 300.0
 #const JUMP_VELOCITY = -400.0

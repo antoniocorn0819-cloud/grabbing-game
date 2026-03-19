@@ -7,6 +7,8 @@ class_name GrabberComponent extends Node
 
 var current_grabbable_component: GrabableComponent
 
+
+
 func initiate_grab() -> void:
 	print("initiating grab")
 	print(grab_box.get_overlapping_bodies())
