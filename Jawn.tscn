@@ -31,12 +31,13 @@ texture = SubResource("PlaceholderTexture2D_8mgam")
 visible = false
 shape = SubResource("CircleShape2D_wi61b")
 
-[node name="Components" type="Node" parent="." unique_id=308913555 node_paths=PackedStringArray("jawn_root_node", "movement_component", "gravity_component", "grabable_component", "health_component")]
+[node name="Components" type="Node" parent="." unique_id=308913555 node_paths=PackedStringArray("jawn_root_node", "movement_component", "gravity_component", "grabable_component", "hitbox_component", "health_component")]
 script = ExtResource("1_0ysdr")
 jawn_root_node = NodePath("..")
 movement_component = NodePath("MovementComponent")
 gravity_component = NodePath("MovementComponent/GravityComponent")
 grabable_component = NodePath("../GrabableComponent")
+hitbox_component = NodePath("../HitboxComponent")
 health_component = NodePath("HealthComponent")
 
 [node name="MovementComponent" type="Node" parent="Components" unique_id=1193077374 node_paths=PackedStringArray("body", "collision_shape")]
@@ -68,11 +69,13 @@ position = Vector2(-3.8146973e-06, 0)
 scale = Vector2(0.515625, 0.296875)
 texture = ExtResource("5_jnjk7")
 
-[node name="HitboxComponent" type="Area2D" parent="." unique_id=99009896 node_paths=PackedStringArray("health_component")]
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=99009896 node_paths=PackedStringArray("collision_shape", "health_component", "movement_component")]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("6_41w5e")
+collision_shape = NodePath("CollisionShape2D")
 health_component = NodePath("../Components/HealthComponent")
+movement_component = NodePath("../Components/MovementComponent")
 metadata/_custom_type_script = "uid://6kxrlug202kg"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1061777583]

@@ -3,6 +3,8 @@ class_name HurtboxComponent extends Area2D
 signal hitbox_found
 signal hit_box
 
+@export var collision_shape: CollisionShape2D
+
 func initiate_hurt() -> void:
 	# add cooldows and such
 	print("initiating hurt")

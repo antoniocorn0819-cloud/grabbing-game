@@ -45,6 +45,8 @@ func enemy_hit():
 
 
 func per_enemy_hit(hitbox: HitboxComponent):
+	if !hitbox.movement_component == null:
+		hitbox.movement_component.body.velocity.y += 600
 	hitbox.recieve_damage(1)
 
 #const SPEED = 300.0

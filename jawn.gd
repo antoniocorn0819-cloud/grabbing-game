@@ -5,6 +5,7 @@ extends Node
 @export var movement_component: MovementComponent
 @export var gravity_component: GravityComponent
 @export var grabable_component: GrabableComponent
+@export var hitbox_component: HitboxComponent
 @export var health_component: HealthComponent
 
 
@@ -39,9 +40,9 @@ func grab_on_handler():
 	current_state = States.Grabbed
 	# make universal?
 	movement_component.collision_shape.disabled = true
-	
+	hitbox_component.collision_shape.disabled = true
 	# definitely make this universal somehow
-	call_deferred("grab_on_deffered")
+	# call_deferred("grab_on_deffered")
 
 # this is so janky rn but it doesnt even work
 func grab_on_deffered():
@@ -52,4 +53,5 @@ func grab_off_handler(inherit_throw_velocity):
 	current_state = States.Free
 	movement_component.body.velocity = inherit_throw_velocity
 	movement_component.collision_shape.disabled = false
+	hitbox_component.collision_shape.disabled = false
 	print("jawn grab off handler ran")
