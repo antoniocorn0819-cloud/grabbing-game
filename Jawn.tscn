@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://bfku2vy66djcq"]
 
-[ext_resource type="Script" uid="uid://3dh3ka133fto" path="res://jawn.gd" id="1_0ysdr"]
-[ext_resource type="Script" uid="uid://calksks73icd3" path="res://Scripts/Components/movement.gd" id="2_xxsqy"]
+[ext_resource type="Script" uid="uid://3dh3ka133fto" path="res://Scripts/jawn.gd" id="1_0ysdr"]
+[ext_resource type="Script" uid="uid://b4g24alil7ko5" path="res://Scripts/Components/character_movement.gd" id="2_41w5e"]
 [ext_resource type="Script" uid="uid://mkun4e61s3m2" path="res://Scripts/Components/gravity.gd" id="3_jnjk7"]
-[ext_resource type="Script" uid="uid://cancdmwq1i6mp" path="res://health.gd" id="4_0h1w8"]
-[ext_resource type="Script" uid="uid://be1fotpe6niyh" path="res://grabbable.gd" id="4_xxsqy"]
+[ext_resource type="Script" uid="uid://cancdmwq1i6mp" path="res://Scripts/Components/health.gd" id="4_0h1w8"]
+[ext_resource type="Script" uid="uid://be1fotpe6niyh" path="res://Scripts/Components/grabbable.gd" id="5_0h1w8"]
 [ext_resource type="Texture2D" uid="uid://nlyhelhbp7jw" path="res://icon.svg" id="5_jnjk7"]
-[ext_resource type="Script" uid="uid://6kxrlug202kg" path="res://hitbox.gd" id="6_41w5e"]
+[ext_resource type="Script" uid="uid://6kxrlug202kg" path="res://Scripts/Components/hitbox.gd" id="6_41w5e"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8mgam"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wi61b"]
-radius = 49.162994
+radius = 34.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xxsqy"]
 radius = 34.0
@@ -28,24 +28,21 @@ scale = Vector2(-70.45024, -68.379005)
 texture = SubResource("PlaceholderTexture2D_8mgam")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=637113364]
-visible = false
 shape = SubResource("CircleShape2D_wi61b")
 
-[node name="Components" type="Node" parent="." unique_id=308913555 node_paths=PackedStringArray("jawn_root_node", "movement_component", "gravity_component", "grabable_component", "hitbox_component", "health_component")]
+[node name="Components" type="Node" parent="." unique_id=308913555 node_paths=PackedStringArray("jawn_root_node", "jawn_movement_component", "gravity_component", "grabable_component", "hitbox_component", "health_component")]
 script = ExtResource("1_0ysdr")
 jawn_root_node = NodePath("..")
-movement_component = NodePath("MovementComponent")
+jawn_movement_component = NodePath("MovementComponent")
 gravity_component = NodePath("MovementComponent/GravityComponent")
 grabable_component = NodePath("../GrabableComponent")
 hitbox_component = NodePath("../HitboxComponent")
 health_component = NodePath("HealthComponent")
 
 [node name="MovementComponent" type="Node" parent="Components" unique_id=1193077374 node_paths=PackedStringArray("body", "collision_shape")]
-script = ExtResource("2_xxsqy")
+script = ExtResource("2_41w5e")
 body = NodePath("../..")
 collision_shape = NodePath("../../CollisionShape2D")
-mass = 0.5
-metadata/_custom_type_script = "uid://calksks73icd3"
 
 [node name="GravityComponent" type="Node" parent="Components/MovementComponent" unique_id=1545104408 node_paths=PackedStringArray("movement_component")]
 script = ExtResource("3_jnjk7")
@@ -59,7 +56,7 @@ metadata/_custom_type_script = "uid://cancdmwq1i6mp"
 [node name="GrabableComponent" type="Area2D" parent="." unique_id=642606005 node_paths=PackedStringArray("object_root_node")]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("4_xxsqy")
+script = ExtResource("5_0h1w8")
 object_root_node = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabableComponent" unique_id=407460024]

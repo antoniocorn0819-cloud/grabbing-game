@@ -3,7 +3,7 @@ class_name GrabberComponent extends Node
 @export var grab_box: Area2D
 @export var grab_point: Node2D
 
-@export var movement_component: MovementComponent
+@export var movement_component: MovementInterface
 
 var current_grabbable_component: GrabableComponent
 

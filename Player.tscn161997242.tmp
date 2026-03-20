@@ -3,11 +3,37 @@
 [ext_resource type="Script" uid="uid://m2ibf76bcouu" path="res://Scripts/player.gd" id="1_xhfnw"]
 [ext_resource type="Script" uid="uid://dqj0pvvjik8kk" path="res://Scripts/Components/input.gd" id="2_kne1u"]
 [ext_resource type="Texture2D" uid="uid://nlyhelhbp7jw" path="res://icon.svg" id="2_kpjcp"]
-[ext_resource type="Script" uid="uid://b4g24alil7ko5" path="res://Scripts/Components/character_movement.gd" id="3_dtqjt"]
 [ext_resource type="Script" uid="uid://bi34je4hkt54p" path="res://Scripts/Components/character_controls.gd" id="4_cxr5p"]
 [ext_resource type="Script" uid="uid://mkun4e61s3m2" path="res://Scripts/Components/gravity.gd" id="5_tdg3f"]
-[ext_resource type="Script" uid="uid://cn6u5cj0w5vjg" path="res://Scripts/Components/grabber.gd" id="6_5ncpa"]
 [ext_resource type="Script" uid="uid://cic75o1o2v4s6" path="res://Scripts/Components/hurtbox.gd" id="8_5ncpa"]
+
+[sub_resource type="GDScript" id="GDScript_dtqjt"]
+script/source = "class_name GrabberComponent extends Node
+
+@export var grab_box: Area2D
+@export var grab_point: Node2D
+
+@export var movement_component: MovementInterface
+
+var current_grabbable_component: GrabableComponent
+
+
+
+func initiate_grab() -> void:
+	print(\"initiating grab\")
+	print(grab_box.get_overlapping_bodies())
+	if grab_box.get_overlapping_areas().size() > 0 :
+		print(\"objects found\")
+		if !grab_box.get_overlapping_areas()[0].is_grabbed:
+			grab_box.get_overlapping_areas()[0].attempt_grab(self)
+			current_grabbable_component = grab_box.get_overlapping_areas()[0]
+
+
+
+func initiate_throw(throw_inherit_velocity: Vector2):
+	current_grabbable_component.attempt_throw(throw_inherit_velocity)
+	current_grabbable_component = null
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kpjcp"]
 radius = 26.0
@@ -33,10 +59,7 @@ jump_attack = NodePath("../HurtboxComponent")
 [node name="Input" type="Node" parent="Components" unique_id=1063273412]
 script = ExtResource("2_kne1u")
 
-[node name="Movement" type="Node" parent="Components" unique_id=965091662 node_paths=PackedStringArray("body", "collision_shape")]
-script = ExtResource("3_dtqjt")
-body = NodePath("../..")
-collision_shape = NodePath("../../CollisionShape2D")
+[node name="Movement" type="Node" parent="Components" unique_id=965091662]
 
 [node name="Character Controls" type="Node" parent="Components/Movement" unique_id=1725183300 node_paths=PackedStringArray("movement")]
 script = ExtResource("4_cxr5p")
@@ -47,7 +70,7 @@ script = ExtResource("5_tdg3f")
 movement_component = NodePath("..")
 
 [node name="GrabberComponent" type="Node" parent="Components" unique_id=1313574823 node_paths=PackedStringArray("grab_box", "grab_point", "movement_component")]
-script = ExtResource("6_5ncpa")
+script = SubResource("GDScript_dtqjt")
 grab_box = NodePath("../../Grab Box")
 grab_point = NodePath("../../Grab Point AHHH")
 movement_component = NodePath("../Movement")

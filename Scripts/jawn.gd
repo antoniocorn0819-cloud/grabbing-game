@@ -2,7 +2,7 @@ extends Node
 
 @export var jawn_root_node: Node
 
-@export var movement_component: MovementComponent
+@export var jawn_movement_component: CharacterMovementComponent
 @export var gravity_component: GravityComponent
 @export var grabable_component: GrabableComponent
 @export var hitbox_component: HitboxComponent
@@ -28,7 +28,7 @@ func death_handler():
 func _physics_process(delta: float) -> void:
 	if current_state == States.Free:
 		gravity_component.update_gravity()
-		movement_component.update_movement(delta)
+		jawn_movement_component.update_movement(delta)
 	elif current_state == States.Grabbed:
 		pass
 		# print("jawn in grab state")
@@ -39,19 +39,19 @@ func _physics_process(delta: float) -> void:
 func grab_on_handler():
 	current_state = States.Grabbed
 	# make universal?
-	movement_component.collision_shape.disabled = true
+	jawn_movement_component.collision_shape.disabled = true
 	hitbox_component.collision_shape.disabled = true
 	# definitely make this universal somehow
 	# call_deferred("grab_on_deffered")
 
 # this is so janky rn but it doesnt even work
-func grab_on_deffered():
-	movement_component.body.global_position = grabable_component.get_grabber_position(movement_component.body.global_position)
+# func grab_on_deffered():
+#	jawn_movement_component.body.global_position = grabable_component.get_grabber_position(movement_component.body.global_position)
 
 
 func grab_off_handler(inherit_throw_velocity):
 	current_state = States.Free
-	movement_component.body.velocity = inherit_throw_velocity
-	movement_component.collision_shape.disabled = false
+	jawn_movement_component.set_velocity(inherit_throw_velocity)
+	jawn_movement_component.collision_shape.disabled = false
 	hitbox_component.collision_shape.disabled = false
 	print("jawn grab off handler ran")

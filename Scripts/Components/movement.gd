@@ -1,15 +1,25 @@
-class_name MovementComponent extends Node
+@abstract
+class_name MovementInterface extends Node
 
 
-@export var body: CharacterBody2D
 @export var collision_shape: CollisionShape2D
-@export var mass: float = 1
 
 var delta_local: float = 0
 
-func update_movement(delta: float) -> void:
-	delta_local = delta
-	body.move_and_slide()
+@abstract
+func update_movement(delta: float) -> void
 
-func apply_impulse(impulse_vector: Vector2):
-	body.velocity += impulse_vector / mass
+@abstract
+func add_velocity(velocity_vector: Vector2)
+
+@abstract
+func apply_impulse(impulse_vector: Vector2) -> void
+
+@abstract
+func set_velocity(velocity_vector: Vector2)
+
+@abstract
+func set_velocity_y(value: float)
+
+@abstract
+func set_velocity_x(value: float)

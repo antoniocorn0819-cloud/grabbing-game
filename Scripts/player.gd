@@ -3,7 +3,7 @@ extends Node
 
 @export var input_component: InputComponent
 
-@export var movement_component: MovementComponent
+@export var movement_component: CharacterMovementComponent
 @export var character_controls: CharacterControls
 @export var gravity_component: GravityComponent
 
@@ -42,7 +42,7 @@ func enemy_hit():
 	# change to force
 	print("got it")
 	# change to impulse????
-	movement_component.body.velocity.y = -500
+	movement_component.set_velocity_y(-500)
 
 
 func per_enemy_hit(hitbox: HitboxComponent):

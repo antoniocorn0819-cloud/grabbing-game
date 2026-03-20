@@ -8,7 +8,7 @@ signal hit
 @export var collision_shape: CollisionShape2D
 
 @export var health_component: HealthComponent
-@export var movement_component: MovementComponent
+@export var movement_component: MovementInterface
 
 @export var default_color: Constants.Type
 var current_color: Constants.Type
