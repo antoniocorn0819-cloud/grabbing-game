@@ -31,6 +31,7 @@ func _physics_process(delta):
 	movement_component.update_movement(delta)
 	
 	if input_component.is_grabbing:
+		# make more flexible and readible
 		if grabber_component.current_grabbable_component == null:
 			grabber_component.initiate_grab()
 		else:
