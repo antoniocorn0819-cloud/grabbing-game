@@ -12,8 +12,8 @@ extends Node
 @export var jump_attack: HurtboxComponent
 
 func _ready():
-	jump_attack.hit_box.connect(enemy_hit)
-	jump_attack.hitbox_found.connect(per_enemy_hit)
+	jump_attack.attack_response.connect(enemy_hit)
+	jump_attack.attack.connect(per_enemy_hit)
 
 
 func _physics_process(delta):

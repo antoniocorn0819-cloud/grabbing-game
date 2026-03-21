@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://brlerw034ucb0" path="res://Player.tscn" id="1_wbfu4"]
 [ext_resource type="PackedScene" uid="uid://bfku2vy66djcq" path="res://Jawn.tscn" id="1_xkndl"]
+[ext_resource type="PackedScene" uid="uid://48l52hjms0q4" path="res://Projectile.tscn" id="3_u44n3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xkndl"]
 
@@ -22,7 +23,7 @@ position = Vector2(216, 104)
 position = Vector2(349, -35)
 
 [node name="Jawn5" parent="." unique_id=1626373825 instance=ExtResource("1_xkndl")]
-position = Vector2(330, 49)
+position = Vector2(518, 153)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1079545116]
 position = Vector2(0, 300)
@@ -33,3 +34,19 @@ shape = SubResource("WorldBoundaryShape2D_xkndl")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=575269455]
 
 [node name="Player" parent="." unique_id=338972521 instance=ExtResource("1_wbfu4")]
+
+[node name="RigidBody2D" parent="." unique_id=1207915264 instance=ExtResource("3_u44n3")]
+position = Vector2(-380, 226)
+
+[node name="RigidBody2D4" parent="." unique_id=419020748 instance=ExtResource("3_u44n3")]
+position = Vector2(-347, 253)
+
+[node name="RigidBody2D5" parent="." unique_id=2042945470 instance=ExtResource("3_u44n3")]
+position = Vector2(-346, 207)
+
+[node name="RigidBody2D2" parent="." unique_id=1155753765 instance=ExtResource("3_u44n3")]
+position = Vector2(-314, 227)
+
+[node name="RigidBody2D3" parent="." unique_id=138712735 instance=ExtResource("3_u44n3")]
+position = Vector2(-344, 183)
+linear_velocity = Vector2(0, 0)
