@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://ci5y6fxluot74"]
+
+[ext_resource type="Script" uid="uid://bssgewpbm15if" path="res://Scripts/Components/rigid_movement.gd" id="1_3rnyv"]
+[ext_resource type="Script" uid="uid://cancdmwq1i6mp" path="res://Scripts/Components/health.gd" id="2_dbogy"]
+[ext_resource type="Script" uid="uid://6kxrlug202kg" path="res://Scripts/Components/hitbox.gd" id="3_hhgla"]
+[ext_resource type="Script" uid="uid://cic75o1o2v4s6" path="res://Scripts/Components/hurtbox.gd" id="4_7rt88"]
+
+[sub_resource type="Gradient" id="Gradient_8apua"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7t7m1"]
+gradient = SubResource("Gradient_8apua")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5m0qq"]
+radius = 29.274563
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6qaup"]
+radius = 28.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_swf5k"]
+radius = 33.01515
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=1207915264]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=536836598]
+texture = SubResource("GradientTexture2D_7t7m1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1169173709]
+shape = SubResource("CircleShape2D_5m0qq")
+
+[node name="Component" type="Node" parent="." unique_id=914000869]
+
+[node name="RigidMovementComponent" type="Node" parent="Component" unique_id=1468436338 node_paths=PackedStringArray("body", "collision_shape")]
+script = ExtResource("1_3rnyv")
+body = NodePath("../..")
+collision_shape = NodePath("../../CollisionShape2D")
+metadata/_custom_type_script = "uid://bssgewpbm15if"
+
+[node name="HealthComponent" type="Node" parent="Component" unique_id=706193265]
+script = ExtResource("2_dbogy")
+health = 1
+metadata/_custom_type_script = "uid://cancdmwq1i6mp"
+
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=525258892]
+script = ExtResource("3_hhgla")
+metadata/_custom_type_script = "uid://6kxrlug202kg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1579940143]
+shape = SubResource("CircleShape2D_6qaup")
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=1145322623]
+script = ExtResource("4_7rt88")
+metadata/_custom_type_script = "uid://cic75o1o2v4s6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=270577454]
+shape = SubResource("CircleShape2D_swf5k")
