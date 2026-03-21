@@ -67,7 +67,6 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grab Box" unique_id=445590259]
-visible = false
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_tdg3f")
 
