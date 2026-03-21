@@ -1,8 +1,12 @@
 extends Node
 
 
-enum Type {
+enum Colors {
 	Player,
 	Enemy,
 	Neutral
+}
+
+enum DamageTypes {
+	Contact,
 }

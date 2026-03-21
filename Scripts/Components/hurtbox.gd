@@ -8,10 +8,10 @@ signal attack
 @export var collision_shape: CollisionShape2D
 
 @export var ignore_list: Array[HitboxComponent]
+@export var damage_types: Array[Constants.DamageTypes]
 
-
-@export var default_color: Constants.Type
-var current_color: Constants.Type
+@export var default_color: Constants.Colors
+var current_color: Constants.Colors
 
 
 
@@ -31,11 +31,17 @@ func initiate_hurt() -> void:
 		if item in ignore_list:
 			# skips rest
 			continue
-		if item.current_color == Constants.Type.Neutral:
+		for type in item.ignore_types:
+			print("parsing through ignore types")
+			print(item.ignore_types)
+			print(damage_types)
+			if type in damage_types:
+				continue
+		if item.current_color == Constants.Colors.Neutral:
 			collision_items.append(item)
 		if item.current_color != current_color:
 			collision_items.append(item)
-	
+		
 	print(collision_items)
 	if collision_items.size() > 0 :
 		# print("objects found")

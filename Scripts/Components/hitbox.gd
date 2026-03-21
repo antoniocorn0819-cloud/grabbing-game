@@ -1,8 +1,6 @@
 class_name HitboxComponent extends Area2D
 
 
-
-
 signal hit
 
 @export var collision_shape: CollisionShape2D
@@ -10,8 +8,11 @@ signal hit
 @export var health_component: HealthComponent
 @export var movement_component: MovementInterface
 
-@export var default_color: Constants.Type
-var current_color: Constants.Type
+@export var default_color: Constants.Colors
+var current_color: Constants.Colors
+
+@export var ignore_types: Array[Constants.DamageTypes]
+
 
 func _ready():
 	# big hmmm

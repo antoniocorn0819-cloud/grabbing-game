@@ -62,6 +62,7 @@ collision_shape = NodePath("CollisionShape2D")
 health_component = NodePath("../Component/HealthComponent")
 movement_component = NodePath("../Component/RigidMovementComponent")
 default_color = 2
+ignore_types = Array[int]([0])
 metadata/_custom_type_script = "uid://6kxrlug202kg"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1579940143]
@@ -90,4 +91,3 @@ metadata/_custom_type_script = "uid://be1fotpe6niyh"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabableComponent" unique_id=1869858812]
 shape = SubResource("CircleShape2D_7rt88")
-disabled = true

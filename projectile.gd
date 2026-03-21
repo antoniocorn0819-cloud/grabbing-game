@@ -18,6 +18,10 @@ func _ready():
 func on_hurtbox_entered(body):
 	hurtbox_component.initiate_hurt()
 
+func _physics_process(delta):
+	pass
+	# hurtbox_component.initiate_hurt()
+
 func per_attack(hitbox: HitboxComponent):
 	hitbox.recieve_damage(1)
 
