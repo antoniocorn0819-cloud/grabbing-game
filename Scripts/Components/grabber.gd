@@ -12,10 +12,13 @@ var current_grabbable_component: GrabableComponent
 func initiate_grab() -> void:
 	print("initiating grab")
 	print(grab_box.get_overlapping_areas())
+	
+	#if there's any overlapping areas
 	if grab_box.get_overlapping_areas().size() > 0 :
 		print("objects found")
+		# if the object is not grabbed
 		if !grab_box.get_overlapping_areas()[0].is_grabbed:
-			grab_box.get_overlapping_areas()[0].attempt_grab(self)
+			grab_box.get_overlapping_areas()[0].attempt_grabbed(self)
 			current_grabbable_component = grab_box.get_overlapping_areas()[0]
 
 

@@ -6,7 +6,9 @@
 [ext_resource type="Script" uid="uid://cancdmwq1i6mp" path="res://Scripts/Components/health.gd" id="4_0h1w8"]
 [ext_resource type="Script" uid="uid://be1fotpe6niyh" path="res://Scripts/Components/grabbable.gd" id="5_0h1w8"]
 [ext_resource type="Texture2D" uid="uid://nlyhelhbp7jw" path="res://icon.svg" id="5_jnjk7"]
+[ext_resource type="Script" uid="uid://cixwhe0p6ddnt" path="res://Scripts/Components/spawner.gd" id="5_m3ac1"]
 [ext_resource type="Script" uid="uid://6kxrlug202kg" path="res://Scripts/Components/hitbox.gd" id="6_41w5e"]
+[ext_resource type="PackedScene" uid="uid://ci5y6fxluot74" path="res://Projectile.tscn" id="6_xd7np"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8mgam"]
 
@@ -52,6 +54,11 @@ metadata/_custom_type_script = "uid://mkun4e61s3m2"
 [node name="HealthComponent" type="Node" parent="Components" unique_id=415445807]
 script = ExtResource("4_0h1w8")
 metadata/_custom_type_script = "uid://cancdmwq1i6mp"
+
+[node name="SpawnerComponent" type="Node" parent="Components" unique_id=236990325]
+script = ExtResource("5_m3ac1")
+scene = ExtResource("6_xd7np")
+metadata/_custom_type_script = "uid://cixwhe0p6ddnt"
 
 [node name="GrabableComponent" type="Area2D" parent="." unique_id=642606005 node_paths=PackedStringArray("object_root_node")]
 collision_layer = 4

@@ -9,13 +9,14 @@ var container_node: Node
 
 var is_grabbed: bool = false
 
+# if it's grabbed, reference to the grabber
 var grabber_component: GrabberComponent
 
 func _ready() -> void:
 	container_node = object_root_node.get_parent()
 
 
-func attempt_grab(passed_grabber_component: GrabberComponent):
+func attempt_grabbed(passed_grabber_component: GrabberComponent):
 	grabber_component = passed_grabber_component
 	is_grabbed = true
 	# maybe change to reparent

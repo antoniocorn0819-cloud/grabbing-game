@@ -54,4 +54,3 @@ func grab_off_handler(inherit_throw_velocity):
 	jawn_movement_component.set_velocity(inherit_throw_velocity)
 	jawn_movement_component.collision_shape.disabled = false
 	hitbox_component.collision_shape.disabled = false
-	print("jawn grab off handler ran")
