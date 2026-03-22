@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://48l52hjms0q4"]
+[gd_scene format=3 uid="uid://ci5y6fxluot74"]
 
 [ext_resource type="Script" uid="uid://bssgewpbm15if" path="res://Scripts/Components/rigid_movement.gd" id="1_3rnyv"]
-[ext_resource type="Script" uid="uid://bmpgckrtng4ty" path="res://projectile.gd" id="1_dbogy"]
+[ext_resource type="Script" path="res://projectile.gd" id="1_dbogy"]
 [ext_resource type="Script" uid="uid://cancdmwq1i6mp" path="res://Scripts/Components/health.gd" id="2_dbogy"]
 [ext_resource type="Script" uid="uid://6kxrlug202kg" path="res://Scripts/Components/hitbox.gd" id="3_hhgla"]
 [ext_resource type="Script" uid="uid://cic75o1o2v4s6" path="res://Scripts/Components/hurtbox.gd" id="4_7rt88"]
@@ -52,6 +52,7 @@ metadata/_custom_type_script = "uid://bssgewpbm15if"
 
 [node name="HealthComponent" type="Node" parent="Component" unique_id=706193265]
 script = ExtResource("2_dbogy")
+health = 1
 metadata/_custom_type_script = "uid://cancdmwq1i6mp"
 
 [node name="HitboxComponent" type="Area2D" parent="." unique_id=525258892 node_paths=PackedStringArray("collision_shape", "health_component", "movement_component")]

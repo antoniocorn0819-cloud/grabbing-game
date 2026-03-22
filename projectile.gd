@@ -26,7 +26,7 @@ func per_attack(hitbox: HitboxComponent):
 	hitbox.recieve_damage(1)
 
 func on_attack():
-	health_component.take_raw_damage(1)
+	death_manager()
 
 func death_manager():
 	root_node.queue_free()

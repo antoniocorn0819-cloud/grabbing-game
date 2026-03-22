@@ -31,12 +31,17 @@ func initiate_hurt() -> void:
 		if item in ignore_list:
 			# skips rest
 			continue
+		
+		var has_ignore_type: bool = false
 		for type in item.ignore_types:
 			print("parsing through ignore types")
 			print(item.ignore_types)
 			print(damage_types)
 			if type in damage_types:
-				continue
+				has_ignore_type = true
+		if has_ignore_type:
+			continue
+		
 		if item.current_color == Constants.Colors.Neutral:
 			collision_items.append(item)
 		if item.current_color != current_color:
